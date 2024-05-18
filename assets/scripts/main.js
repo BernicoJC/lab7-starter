@@ -64,7 +64,7 @@ function saveRecipesToStorage(recipes) {
 	// B1. TODO - Complete the functionality as described in this function
 	//            header. It is possible in only a single line, but should
 	//            be no more than a few lines.
-	localStorage.setItem("recipes", recipes.toString());
+	localStorage.setItem("recipes", JSON.stringify(recipes));
 }
 
 /**
@@ -108,6 +108,9 @@ function initFormHandler() {
 		// B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
 		//            then save the recipes array back to localStorage
 		let recipes = getRecipesFromStorage();
+		if(!recipes){
+			recipes = [];
+		}
 		recipes.push(recipeObject);
 		saveRecipesToStorage(recipes);
 	});
